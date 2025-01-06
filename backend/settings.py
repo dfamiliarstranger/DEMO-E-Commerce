@@ -142,21 +142,22 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+# settings.py
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# For production, you typically collect static files in a centralized location
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Ensure this exists
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Make sure this directory is present in your project
+]
 
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
 
 AUTH_USER_MODEL = 'userauths.User'
 
